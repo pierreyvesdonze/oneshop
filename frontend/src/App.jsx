@@ -1,7 +1,8 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/home";
 import Nav from "./components/nav";
+import Home from "./components/home";
+import Test from "./components/test";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </Router>
   );
