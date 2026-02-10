@@ -1,5 +1,5 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Collapse from "@mui/material/Collapse";
@@ -9,21 +9,21 @@ import MenuItem from "@mui/material/MenuItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const navLinks = [
-  { label: "Accueil", href: "#" },
+  { label: "Accueil", href: "/" },
   {
     label: "Services",
     children: [
-      { label: "Service A", href: "#" },
-      { label: "Service B", href: "#" },
-      { label: "Service C", href: "#" },
+      { label: "Test", href: "/test" },
+      { label: "Service B", href: "/services/b" },
+      { label: "Service C", href: "/services/c" },
     ],
   },
   {
     label: "Contact",
     children: [
-      { label: "Email", href: "#" },
-      { label: "Téléphone", href: "#" },
-      { label: "Adresse", href: "#" },
+      { label: "Email", href: "/contact/email" },
+      { label: "Téléphone", href: "/contact/telephone" },
+      { label: "Adresse", href: "/contact/adresse" },
     ],
   },
 ];
@@ -31,9 +31,8 @@ const navLinks = [
 export default function Nav() {
   const isMobile = useMediaQuery("(max-width:768px)");
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [openSubMenus, setOpenSubMenus] = React.useState({}); // mobile accordion
+  const [openSubMenus, setOpenSubMenus] = React.useState({}); // mobile accordions
 
-  // Toggle sous-menu mobile
   const toggleSubMenu = (label) => {
     setOpenSubMenus((prev) => ({
       ...prev,
@@ -42,25 +41,29 @@ export default function Nav() {
   };
 
   if (isMobile) {
-    // ----- MOBILE MENU -----
+    // -------- MOBILE MENU --------
     return (
-      <div style={{ padding: "1rem", background: "#111827" }}>
+      <div style={{ padding: "1rem", background: "#ffffff" }}>
         <IconButton
           color="inherit"
           onClick={() => setMobileOpen((prev) => !prev)}
         >
-          <MenuIcon style={{ color: "#fff" }} />
+          <MenuIcon style={{ color: "#6B7280" }} />
         </IconButton>
 
+        <h3 style={{
+          position: "absolute", top: '0', left: "50%", transform: "translateX(-50%)",
+        }}>ONE SHOP</h3>
+
         <Collapse in={mobileOpen}>
-          <Paper style={{ marginTop: "0.5rem", background: "#1f2937" }}>
+          <Paper style={{ marginTop: "0.5rem", background: "#ffffff" }}>
             <MenuList>
               {navLinks.map((link) =>
                 link.children ? (
                   <div key={link.label}>
                     <MenuItem
                       onClick={() => toggleSubMenu(link.label)}
-                      style={{ color: "#fff" }}
+                      style={{ color: "#6B7280" }}
                     >
                       {link.label}
                     </MenuItem>
@@ -69,7 +72,9 @@ export default function Nav() {
                         {link.children.map((sub) => (
                           <MenuItem
                             key={sub.label}
-                            style={{ color: "#fff" }}
+                            style={{ color: "#6B7280" }}
+                            component={Link}
+                            to={sub.href}
                             onClick={() => setMobileOpen(false)}
                           >
                             {sub.label}
@@ -81,7 +86,9 @@ export default function Nav() {
                 ) : (
                   <MenuItem
                     key={link.label}
-                    style={{ color: "#fff" }}
+                    style={{ color: "#6B7280" }}
+                    component={Link}
+                    to={link.href}
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
@@ -95,7 +102,7 @@ export default function Nav() {
     );
   }
 
-  // ----- DESKTOP MENU -----
+  // -------- DESKTOP MENU --------
   return (
     <nav
       style={{
@@ -105,6 +112,9 @@ export default function Nav() {
         padding: "1rem",
       }}
     >
+       <h3 style={{
+          position: "absolute", top: '0', left: "5%", transform: "translateX(-5%)",
+        }}>ONE SHOP</h3>
       <ul
         style={{
           display: "flex",
@@ -131,12 +141,12 @@ export default function Nav() {
               }
             }}
           >
-            <a
-              href={link.href || "#"}
-              style={{ color: "#9ca3af", textDecoration: "none" }}
+            <Link
+              to={link.href || "#"}
+              style={{ color: "#6B7280", textDecoration: "none" }}
             >
               {link.label}
-            </a>
+            </Link>
             {link.children && (
               <ul
                 style={{
@@ -155,25 +165,25 @@ export default function Nav() {
               >
                 {link.children.map((sub) => (
                   <li key={sub.label}>
-                    <a
-                      href={sub.href}
+                    <Link
+                      to={sub.href}
                       style={{
                         display: "block",
                         padding: "0.5rem 1rem",
-                        color: "#9ca3af",
+                        color: "#6B7280",
                         textDecoration: "none",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#374151";
-                        e.currentTarget.style.color = "#e5e7eb";
+                        e.currentTarget.style.background = "#E5E7EB"; // gris clair
+                        e.currentTarget.style.color = "#111827"; // texte sombre
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background = "transparent";
-                        e.currentTarget.style.color = "#9ca3af";
+                        e.currentTarget.style.color = "#6B7280";
                       }}
                     >
                       {sub.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
