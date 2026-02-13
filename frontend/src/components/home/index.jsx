@@ -28,7 +28,7 @@ function Home() {
           transition={{
             type: "spring",
             stiffness: 60,
-            damping: 20,
+            damping: 10,
             delay: 0.3,
           }}
         >
@@ -42,7 +42,7 @@ function Home() {
           transition={{
             type: "spring",
             stiffness: 60,
-            damping: 20,
+            damping: 10,
             delay: 0.3,
           }}
         >
