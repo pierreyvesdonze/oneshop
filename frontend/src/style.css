@@ -55,4 +55,28 @@ CONTAINERS
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+}
+
+/*
+******************************************
+HOME
+******************************************
+*/
+.main-image-shoes {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 20px;
+}
+@media (min-width: 300px) and (max-width: 576px) {
+  .main-image-shoes {
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+  }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  .main-image-shoes {
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+  }
 }/*# sourceMappingURL=style.css.map */

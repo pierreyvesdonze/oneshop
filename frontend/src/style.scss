@@ -21,7 +21,7 @@ GENERAL
 
 body {
   margin: 0;
-  background-image: url('../public/assets/images/bg-one-shop.png');
+  background-image: url("../public/assets/images/bg-one-shop.png");
   background-size: cover;
 }
 
@@ -52,4 +52,22 @@ CONTAINERS
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+}
+
+/*
+******************************************
+HOME
+******************************************
+*/
+.main-image-shoes {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 20px;
+  @include xs {
+    object-fit: contain !important;
+  }
+  @include sm {
+    object-fit: contain !important;
+  }
 }
