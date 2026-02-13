@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
+import HomeImages from "./homeImages";
 
 function Home() {
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       {/* Bloc H1 entier animé */}
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <motion.div
@@ -49,7 +50,10 @@ function Home() {
           WOMEN
         </motion.div>
       </div>
-    </>
+
+      {/* Images */}
+      <HomeImages />
+    </div>
   );
 }
 
