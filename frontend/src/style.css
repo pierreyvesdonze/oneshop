@@ -9,6 +9,7 @@ VARIABLES
 ******************************************
 */
 :root {
+  --main-color: #ffffff;
   --main-font-color: #99ffbb;
 }
 
@@ -23,10 +24,35 @@ GENERAL
 
 body {
   margin: 0;
+  background-image: url("../public/assets/images/bg-one-shop.png");
+  background-size: cover;
 }
 
 /*
 ******************************************
-NAV
+CONTAINERS
 ******************************************
-*//*# sourceMappingURL=style.css.map */
+*/
+.text-container {
+  background-color: var(--main-color);
+  display: inline-block;
+  padding: 0.5rem 2rem;
+}
+
+.text-container-blur {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.blur-panel {
+  width: 50%;
+  padding: 3rem;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}/*# sourceMappingURL=style.css.map */
